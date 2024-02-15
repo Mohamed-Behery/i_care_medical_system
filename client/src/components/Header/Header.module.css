@@ -1,0 +1,63 @@
+.header {
+  background-color: #fff;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 40px;
+}
+.left {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.logoWrapper {
+  margin-right: 40px;
+}
+.logo {
+  height: 60px;
+}
+.logoIcon {
+  position: relative;
+  bottom: 5px;
+}
+.logoText {
+  position: relative;
+  top: 5px;
+}
+.link {
+  color: #000;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.login {
+  color: #29b969;
+  font-weight: 600;
+}
+.register {
+  color: #fff;
+  background-color: #29b969;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 600;
+}
+.arrow {
+  margin-left: 8px;
+}
+.menu {
+  display: none;
+  cursor: pointer;
+}
+@media (max-width: 850px) {
+  .menu {
+    display: block;
+  }
+  nav .link,
+  .right .link {
+    display: none;
+  }
+  nav.open .link,
+  .right.open .link {
+    display: block;
+  }
+}
