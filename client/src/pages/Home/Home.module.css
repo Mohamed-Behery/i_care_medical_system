@@ -1,18 +1,22 @@
-section {
+section,
+.aboutContent,
+.cards {
   margin-top: 64px;
 }
 h2 {
   margin-top: 8px;
   font-size: 64px;
   letter-spacing: 0.2;
-  line-height: 30px;
+  line-height: 60px;
   color: rgba(51, 51, 51, 0.2);
+  text-align: center;
 }
 /* -----------
 HERO SECTION
 -----------*/
 .hero,
-.aboutContent {
+.aboutContent,
+.cards {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -67,11 +71,6 @@ ABOUT US
 .about {
   background-color: #f6f6f6;
   padding: 24px;
-  align-items: center;
-  text-align: center;
-}
-.aboutContent {
-  margin-top: 64px;
 }
 hr {
   width: 50%;
@@ -85,5 +84,32 @@ hr {
   font-size: 24px;
 }
 .about .left img {
-    width: 600px;
+  width: 600px;
+}
+
+/* -----------
+SERVICES
+-----------*/
+.cards {
+  justify-content: center;
+}
+.card {
+  width: 380px;
+  min-height: 670px;
+  border: 2px solid #29b969;
+  border-radius: 0 48px 0 48px;
+  box-shadow: 0px 10px 4px 0px rgba(0, 0, 0, 0.20);
+}
+.card img {
+  max-width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 0 48px 0 0;
+}
+.card h3 {
+  text-align: center;
+  color: #29b969;
+  margin: 16px 0;
+}
+.card p {
+  padding: 0 24px;
 }
