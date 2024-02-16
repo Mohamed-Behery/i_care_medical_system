@@ -11,17 +11,15 @@ function App() {
   return (
     <>
       <Header />
-      <div className="container">
-        <Routes>
-          <Route path="/" exact element={Home()} />
-          <Route path="/home" exact element={Home()} />
-          <Route path="/signup" element={Signup()} />
-          <Route path="/onboarding" element={Onboarding()} />{" "}
-          <Route path="/login" element={Login()} />
-          <Route path="/profile" element={Profile()} />{" "}
-          <Route path="/reservations" element={Reservations()} />{" "}
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" exact element={Home()} />
+        <Route path="/home" exact element={Home()} />
+        <Route path="/signup" element={Signup()} />
+        <Route path="/onboarding" element={Onboarding()} />{" "}
+        <Route path="/login" element={Login()} />
+        <Route path="/profile" element={Profile()} />{" "}
+        <Route path="/reservations" element={Reservations()} />{" "}
+      </Routes>
     </>
   );
 }
