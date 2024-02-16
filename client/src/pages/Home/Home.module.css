@@ -1,0 +1,52 @@
+.hero {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 64px;
+  gap: 48px;
+}
+.right img {
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+}
+.left h1 {
+  font-size: 48px;
+  color: #333333;
+}
+.left p {
+  color: #333333;
+}
+.heroBtns {
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-top: 16px;
+}
+.heroBtns a {
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 24px;
+}
+.signup {
+  color: #fff;
+  background-color: #29b969;
+  border-radius: 24px;
+  padding: 8px 16px;
+}
+.login {
+  color: #29b969;
+  border: 2px solid #29b969;
+}
+.arrow {
+  margin-left: 4px;
+}
+@media screen and (max-width: 767px) {
+  .hero {
+    flex-direction: column;
+  }
+}

@@ -7,6 +7,22 @@
   scroll-behavior: smooth;
 }
 .container {
-  width: 80%;
+  padding-left: 15px;
+  padding-right: 15px;
   margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1250px;
+  }
 }
