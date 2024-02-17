@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LogoIcon from "./../../images/logo-icon.png";
 import LogoText from "./../../images/logo-text.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,8 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(true);
+  const location = useLocation();
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const menuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -29,24 +31,24 @@ const Header = () => {
       <nav className={`${!menuOpen ? styles.open : ""}`}>
         <ul>
           <li>
-            <NavLink className={styles.link} to="/home">
+            <a className={styles.link} href="/home">
               Home
-            </NavLink>
+            </a>
           </li>
           <li>
-            <NavLink className={styles.link} to="/home#about">
+            <a className={styles.link} href="/home#about">
               About US
-            </NavLink>
+            </a>
           </li>
           <li>
-            <NavLink className={styles.link} to="/home#services">
+            <a className={styles.link} href="/home#services">
               Services
-            </NavLink>
+            </a>
           </li>
           <li>
-            <NavLink className={styles.link} to="/home#contact">
+            <a className={styles.link} href="/home#contact">
               Contact
-            </NavLink>
+            </a>
           </li>
         </ul>
       </nav>
@@ -55,18 +57,24 @@ const Header = () => {
         icon="fa-bars"
         onClick={menuToggle}
       />
-      <div className={styles.right}>
-        <Link className={[styles.link, styles.login].join(" ")} to="/login">
-          Login
-        </Link>
-        <Link
-          className={[styles.link, styles.signup].join(" ")}
-          to="/signup"
-        >
-          Sign up
-          <FontAwesomeIcon className={styles.arrow} icon="arrow-right" />
-        </Link>
-      </div>
+      {(location.pathname === "/home" ||
+        location.pathname === "/" ||
+        !location.pathname) && (
+        <div className={styles.right}>
+          <div>
+            <Link className={[styles.link, styles.login].join(" ")} to="/login">
+              Login
+            </Link>
+            <Link
+              className={[styles.link, styles.signup].join(" ")}
+              to="/signup"
+            >
+              Sign up
+              <FontAwesomeIcon className={styles.arrow} icon="arrow-right" />
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

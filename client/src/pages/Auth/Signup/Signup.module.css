@@ -1,0 +1,123 @@
+body {
+  height: 100dvh;
+}
+.signup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.left,
+.right {
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right {
+  background: #29b969;
+}
+.left img {
+  width: 600px;
+  max-width: 90%;
+  align-self: center;
+}
+form {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+h3 {
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+input,
+select {
+  font-size: 16px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid #ddd5dd;
+  border-radius: 8px;
+}
+input:focus,
+select:focus {
+  outline: none;
+  border: 1px solid #333;
+}
+label {
+  color: #333333;
+}
+.nameInput,
+.phoneInput {
+  display: flex;
+  gap: 8px;
+}
+.phoneInput input {
+  width: 85%;
+}
+.countryCode {
+  width: 15% !important;
+}
+select option {
+  margin: 8px;
+  color: #333333;
+  background: rgba(255, 255, 255, 0.8);
+}
+select option:checked {
+  color: #29b969;
+  font-weight: 600;
+}
+button {
+  border: none;
+  outline: none;
+  background: #29b969;
+  padding: 8px 16px;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 8px;
+  margin-top: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #2ab468;
+}
+.haveAccount {
+  text-align: center;
+  margin-top: 8px;
+}
+.haveAccount a {
+  margin-left: 4px;
+  text-decoration: none;
+  color: #29b969;
+  font-weight: 600;
+}
+.haveAccount a:hover {
+  text-decoration: underline;
+}
+@media screen and (max-width: 1090px) {
+  .signup {
+    min-height: 100dvh;
+  }
+  .left {
+    display: none;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 767px) {
+  form {
+    width: 80%;
+  }
+  input,
+  select {
+    width: 90%;
+  }
+}

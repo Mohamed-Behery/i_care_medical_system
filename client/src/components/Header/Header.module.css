@@ -41,6 +41,10 @@ nav ul {
   color: #000;
   text-decoration: none;
   margin: 0 10px;
+  transition: all 0.2s;
+}
+.link:hover {
+  color: #29b969;
 }
 .login {
   color: #29b969;
@@ -53,6 +57,9 @@ nav ul {
   padding: 8px 16px;
   font-weight: 600;
   margin-right: 0;
+}
+.signup:hover {
+  color: #fff;
 }
 .arrow {
   margin-left: 8px;
