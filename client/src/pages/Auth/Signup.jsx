@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styles from "./Signup.module.css";
-import signupImg from "./../../../images/signup.png";
+import styles from "./Auth.module.css";
+import signupImg from "./../../images/signup.png";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
@@ -71,8 +71,8 @@ const Signup = () => {
               <button className={styles.btnNext} onClick={handleNext}>
                 Next
               </button>
-              <p className={styles.haveAccount}>
-                Already have an account ?<Link to="/login">Login</Link>
+              <p>
+                Already have an account?<Link to="/login">Login</Link>
               </p>
             </>
           )}

@@ -1,7 +1,8 @@
 body {
   height: 100dvh;
 }
-.signup {
+.signup,
+.login {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,10 +15,12 @@ body {
   justify-content: center;
   align-items: center;
 }
-.right {
+.signup .right,
+.login .left {
   background: #29b969;
 }
-.left img {
+.signup .left img,
+.login .right img {
   width: 600px;
   max-width: 90%;
   align-self: center;
@@ -25,7 +28,7 @@ body {
 form {
   background: rgba(255, 255, 255, 0.8);
   border-radius: 16px;
-  padding: 24px;
+  padding: 32px 48px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -73,7 +76,7 @@ select option:checked {
   color: #29b969;
   font-weight: 600;
 }
-button {
+form button {
   border: none;
   outline: none;
   background: #29b969;
@@ -88,27 +91,50 @@ button {
 button:hover {
   background-color: #2ab468;
 }
-.haveAccount {
+form p {
   text-align: center;
   margin-top: 8px;
 }
-.haveAccount a {
+form p a {
   margin-left: 4px;
   text-decoration: none;
   color: #29b969;
   font-weight: 600;
 }
-.haveAccount a:hover {
+form p a:hover {
   text-decoration: underline;
 }
+/*----------
+Login
+--------*/
+input[type="checkbox"] {
+  margin-right: 4px;
+}
+.loginFeatures {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 8px;
+}
+.forgot {
+  color: #29b969;
+  font-weight: 400;
+  text-decoration: none;
+}
+.forgot:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 1090px) {
   .signup {
     min-height: 100dvh;
   }
-  .left {
+  .signup .left,
+  .login .right {
     display: none;
   }
-  .right {
+  .signup .right,
+  .login .left {
     width: 100%;
   }
 }
