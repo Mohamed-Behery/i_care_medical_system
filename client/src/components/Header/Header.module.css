@@ -73,6 +73,18 @@ nav ul {
 .open {
   display: block;
 }
+.profileCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  color: #29b969;
+  cursor: pointer;
+}
+.profileCard img {
+  background-color: #29b969;
+  border-radius: 8px;
+}
 @media (max-width: 850px) {
   header {
     justify-content: space-between;

@@ -7,6 +7,7 @@ import pharmacyCard from "./../../images/pharmacy-services.png";
 import labCard from "./../../images/lab-services.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   return (
@@ -24,7 +25,7 @@ const Home = () => {
             </Link>
             <Link className={styles.login} to="/login">
               Login
-              <FontAwesomeIcon className={styles.arrow} icon="arrow-right" />
+              <FontAwesomeIcon className={styles.arrow} icon={faArrowRight} />
             </Link>
           </div>
         </div>

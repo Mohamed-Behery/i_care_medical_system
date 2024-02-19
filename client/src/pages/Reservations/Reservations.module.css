@@ -1,0 +1,69 @@
+.tableWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reservationsTable {
+  margin-top: 64px;
+  border-collapse: collapse;
+}
+.reservationsTable th,
+.reservationsTable td {
+  padding: 16px 24px;
+}
+.reservationsTable th {
+  background-color: #fff;
+  text-align: left;
+}
+.evenRow {
+  background-color: rgba(41, 185, 105, 0.1);
+}
+.oddRow {
+  background-color: #ffffff;
+}
+.status {
+  border-radius: 24px;
+  padding: 4px 16px;
+  display: inline-block;
+  width: 140px;
+  text-align: center;
+}
+.open {
+  background-color: #ebf9f1;
+  color: #41bc63;
+  border: 1px solid #41bc63;
+}
+.booked {
+  background-color: #fbf9f4;
+  color: #bc9241;
+  border: 1px solid #bc9241;
+}
+.completed {
+  background-color: #fbf4f4;
+  color: #bc4141;
+  border: 1px solid #bc4141;
+}
+.reservationsTable button {
+  border: none;
+  outline: none;
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.accept,
+.refuse {
+  background: #624de3;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: #fff;
+}
+.refuse {
+  background-color: crimson;
+}
+.btnDelete {
+  margin-left: 8px;
+}
+.delete {
+  color: rgb(218, 45, 80);
+  font-size: 18px;
+}

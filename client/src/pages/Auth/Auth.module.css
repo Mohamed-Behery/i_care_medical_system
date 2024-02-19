@@ -88,7 +88,7 @@ form button {
   font-weight: 600;
   cursor: pointer;
 }
-button:hover {
+form button:hover {
   background-color: #2ab468;
 }
 form p {
