@@ -6,6 +6,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 const Reservations = () => {
   return (
     <div className={styles.tableWrapper}>
+      <h2 className={styles.reservationsTitle}>Reservations</h2>
       <table className={styles.reservationsTable}>
         <thead>
           <tr>
@@ -32,7 +33,7 @@ const Reservations = () => {
               <button className={styles.accept}>Accept</button>
               <button className={styles.refuse}>Refuse</button>
               <button className={styles.btnDelete}>
-                <FontAwesomeIcon icon={faTrash} className={styles.delete} />
+                <FontAwesomeIcon icon={faTrash} className={styles.deleteIcon} />
               </button>
             </td>
           </tr>
@@ -50,7 +51,7 @@ const Reservations = () => {
               <button className={styles.accept}>Accept</button>
               <button className={styles.refuse}>Refuse</button>
               <button className={styles.btnDelete}>
-                <FontAwesomeIcon icon={faTrash} className={styles.delete} />
+                <FontAwesomeIcon icon={faTrash} className={styles.deleteIcon} />
               </button>
             </td>
           </tr>
@@ -61,14 +62,14 @@ const Reservations = () => {
             <td>2024-02-19 at 9:00 AM</td>
             <td>
               <span className={[styles.status, styles.completed].join(" ")}>
-              Completed
+                Completed
               </span>
             </td>
             <td>
               <button className={styles.accept}>Accept</button>
               <button className={styles.refuse}>Refuse</button>
               <button className={styles.btnDelete}>
-                <FontAwesomeIcon icon={faTrash} className={styles.delete} />
+                <FontAwesomeIcon icon={faTrash} className={styles.deleteIcon} />
               </button>
             </td>
           </tr>
@@ -86,7 +87,7 @@ const Reservations = () => {
               <button className={styles.accept}>Accept</button>
               <button className={styles.refuse}>Refuse</button>
               <button className={styles.btnDelete}>
-                <FontAwesomeIcon icon={faTrash} className={styles.delete} />
+                <FontAwesomeIcon icon={faTrash} className={styles.deleteIcon} />
               </button>
             </td>
           </tr>

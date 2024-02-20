@@ -2,14 +2,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+.reservationsTitle {
+  margin-top: 32px;
 }
 .reservationsTable {
-  margin-top: 64px;
+  margin-top: 32px;
   border-collapse: collapse;
 }
 .reservationsTable th,
 .reservationsTable td {
   padding: 16px 24px;
+  white-space: nowrap;
 }
 .reservationsTable th {
   background-color: #fff;
@@ -63,7 +68,43 @@
 .btnDelete {
   margin-left: 8px;
 }
-.delete {
+.deleteIcon {
   color: rgb(218, 45, 80);
   font-size: 18px;
+}
+@media (max-width: 768px) {
+}
+@media screen and (max-width: 1180px) {
+  .tableWrapper {
+    padding: 0 16px;
+  }
+  .reservationsTitle {
+    font-size: 32px;
+  }
+  .reservationsTable {
+    border: none;
+  }
+  .reservationsTable td {
+    padding: 8px 12px;
+  }
+  .reservationsTable tr {
+    border-bottom: 3px solid #ddd;
+    display: inline-block;
+  }
+  .reservationsTable thead {
+    display: none;
+  }
+  .reservationsTable td {
+    display: block;
+    border-bottom: 1px solid #ddd;
+  }
+}
+@media screen and (max-width: 480px) {
+  .tableWrapper {
+    padding: 0;
+  }
+  .reservationsTable tr {
+    width: 100%;
+    text-align: center;
+  }
 }
