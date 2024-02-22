@@ -1,0 +1,42 @@
+.chatContainer {
+  max-height: calc(100vh - 76px);
+  display: flex;
+  /* background-color: #ddd; */
+}
+.chatContainer > div {
+  padding: 0 16px;
+}
+.chatMenu {
+  flex: 3;
+  padding-left: 16px;
+}
+.chatBox {
+  flex: 6;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+.chatDetails {
+  flex: 3;
+}
+@media screen and (max-width: 767px) {
+  .chatMenu,
+  .chatDetails {
+    display: none;
+  }
+}
+.searchBox {
+  margin: 24px 0;
+  border: 1px solid #ddd;
+  padding: 0 8px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+}
+.searchBox svg {
+  margin-right: 8px;
+  cursor: pointer;
+}
+.searchBox input {
+  border: none;
+  width: 100%;
+}

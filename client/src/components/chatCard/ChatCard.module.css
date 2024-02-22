@@ -1,0 +1,34 @@
+.chatCard {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  border: 1px solid #ddd;
+  position: relative;
+  padding: 8px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+.chatCard:hover {
+    background-color: #ddd;
+}
+.chatCard img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+.chatCard .cardContent h4 {
+  font-weight: 600;
+}
+.chatCard .cardContent p,
+.chatCard .time {
+  font-size: 14px;
+  color: #333;
+}
+.chatCard .time {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+}

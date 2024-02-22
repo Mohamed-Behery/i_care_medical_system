@@ -1,5 +1,5 @@
-body {
-  height: 100dvh;
+.signupContainer, .loginContainer {
+  height: calc(100vh - 76px);
 }
 .signup,
 .login {

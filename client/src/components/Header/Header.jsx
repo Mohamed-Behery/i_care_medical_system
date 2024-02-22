@@ -24,65 +24,67 @@ const Header = () => {
 
   return (
     <header>
-      <Link className={styles.logoWrapper} to="/home">
-        <img
-          className={[styles.logo, styles.logoIcon].join(" ")}
-          src={LogoIcon}
-          alt="Logo Icon"
-        />
-        <img
-          className={[styles.logo, styles.logoText].join(" ")}
-          src={LogoText}
-          alt="Logo Text"
-        />
-      </Link>
-      <nav className={`${!menuOpen ? styles.open : ""}`}>
-        <ul>
-          {location.pathname !== "/reservations" && (
-            <>
-              <li>
-                <a className={styles.link} href="/home">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a className={styles.link} href="/home#about">
-                  About US
-                </a>
-              </li>
-              <li>
-                <a className={styles.link} href="/home#services">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a className={styles.link} href="/home#contact">
-                  Contact
-                </a>
-              </li>
-            </>
-          )}
-          {location.pathname === "/reservations" && (
-            <>
-              <li>
-                <a className={styles.link} href="/home">
-                  <img src={HomeIcon} alt="Home" />
-                </a>
-              </li>
-              <li>
-                <a className={styles.link} href="/reservations">
-                  <img src={ReservationsIcon} alt="Reservations" />
-                </a>
-              </li>
-              <li>
-                <a className={styles.link} href="/chat">
-                  <img src={ChatIcon} alt="Chat" />
-                </a>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
+      <div className={styles.left}>
+        <Link className={styles.logoWrapper} to="/home">
+          <img
+            className={[styles.logo, styles.logoIcon].join(" ")}
+            src={LogoIcon}
+            alt="Logo Icon"
+          />
+          <img
+            className={[styles.logo, styles.logoText].join(" ")}
+            src={LogoText}
+            alt="Logo Text"
+          />
+        </Link>
+        <nav className={`${!menuOpen ? styles.open : ""}`}>
+          <ul>
+            {location.pathname !== "/reservations" && (
+              <>
+                <li>
+                  <a className={styles.link} href="/home">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a className={styles.link} href="/home#about">
+                    About US
+                  </a>
+                </li>
+                <li>
+                  <a className={styles.link} href="/home#services">
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a className={styles.link} href="/home#contact">
+                    Contact
+                  </a>
+                </li>
+              </>
+            )}
+            {location.pathname === "/reservations" && (
+              <>
+                <li>
+                  <a className={styles.link} href="/home">
+                    <img src={HomeIcon} alt="Home" />
+                  </a>
+                </li>
+                <li>
+                  <a className={styles.link} href="/reservations">
+                    <img src={ReservationsIcon} alt="Reservations" />
+                  </a>
+                </li>
+                <li>
+                  <a className={styles.link} href="/chat">
+                    <img src={ChatIcon} alt="Chat" />
+                  </a>
+                </li>
+              </>
+            )}
+          </ul>
+        </nav>
+      </div>
       <FontAwesomeIcon
         className={styles.menu}
         icon={faBars}

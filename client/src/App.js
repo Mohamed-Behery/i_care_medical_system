@@ -5,6 +5,7 @@ import Signup from "./pages/Auth/Signup";
 import Login from "./pages/Auth/Login";
 import Profile from "./pages/Profile";
 import Reservations from "./pages/Reservations/Reservations";
+import Chat from "./pages/Chat/Chat";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Route path="/home" exact element={Home()} />
         <Route path="/signup" element={Signup()} />
         <Route path="/login" element={Login()} />
-        <Route path="/profile" element={Profile()} />{" "}
-        <Route path="/reservations" element={Reservations()} />{" "}
+        <Route path="/profile" element={Profile()} />
+        <Route path="/reservations" element={Reservations()} />
+        <Route path="/chat" element={Chat()} />
       </Routes>
     </>
   );

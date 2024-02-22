@@ -2,16 +2,18 @@ header {
   background-color: #fff;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 5px 40px;
+  padding: 5px 120px;
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 999;
+  height: 76px;
 }
 nav {
   position: relative;
+  /* border: 1px solid red; */
 }
 nav ul {
   display: flex;
@@ -21,10 +23,14 @@ nav ul {
   /* border: 1px solid red; */
   list-style: none;
 }
-.right {
+.right,
+.left {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.left {
+  gap: 32px;
 }
 .logo {
   height: 60px;
@@ -87,22 +93,62 @@ nav ul {
 }
 @media (max-width: 850px) {
   header {
-    justify-content: space-between;
-    padding: 4px 16px;
+    padding: 10px 0px;
   }
   .left {
-    flex-direction: column;
+    margin-bottom: 20px;
   }
-  .menu {
-    display: block;
-  }
-  nav,
   .right {
     display: none;
   }
+  .logoWrapper {
+    width: 140px;
+  }
+  .logoWrapper img {
+    width: 60px;
+    height: 100%;
+  }
+  .logoWrapper .logoIcon {
+    top: 2px;
+  }
+  .logoWrapper .logoText {
+    width: 72px;
+  }
+  .menu {
+    display: block;
+    margin-bottom: 10px;
+    position: absolute;
+    right: 18px;
+    top: 24px;
+  }
+  nav {
+    display: none;
+    width: 100%;
+  }
   nav.open {
     display: block;
-    width: 100%;
-    height: fit-content;
+  }
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .link {
+    color: #000;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .profileCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    color: #29b969;
+    cursor: pointer;
+  }
+  .profileCard img {
+    background-color: #29b969;
+    border-radius: 8px;
   }
 }
