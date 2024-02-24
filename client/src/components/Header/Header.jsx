@@ -108,7 +108,7 @@ const Header = () => {
           </div>
         </div>
       )}
-      {location.pathname === "/reservations" && (
+      {(location.pathname === "/reservations" || location.pathname === "/profile") && (
         <div className={styles.right}>
           <div className={styles.profileCard}>
             <img src={ProfileImg} alt="Profile" />

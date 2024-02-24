@@ -1,0 +1,58 @@
+.profileWrapper {
+  max-width: 80%;
+  margin: 0 auto;
+  background: #f9f9f9;
+  padding: 16px 24px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+}
+.profileTitle {
+  margin: 32px 0;
+}
+.imgWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.profileInfoWrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.profileWrapper img {
+  background-color: #29b969;
+  border-radius: 16px;
+  width: 88px;
+}
+.profileWrapper input[type="file"] {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+.infoLeft,
+.infoRight {
+  border-radius: 16px;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.profileInfoWrapper input,
+.profileInfoWrapper select {
+  cursor: not-allowed;
+  background: #fff;
+}
+.nameInput,
+.phoneInput {
+  display: flex;
+  gap: 8px;
+}
+.phoneInput input {
+  width: 85%;
+}
+.countryCode {
+  width: 15% !important;
+}

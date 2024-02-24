@@ -3,7 +3,7 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Signup from "./pages/Auth/Signup";
 import Login from "./pages/Auth/Login";
-import Profile from "./pages/Profile";
+import Profile from "./pages/Profile/Profile";
 import Reservations from "./pages/Reservations/Reservations";
 import Chat from "./pages/Chat/Chat";
 

@@ -134,21 +134,4 @@ nav ul {
     align-items: center;
     gap: 10px;
   }
-  .link {
-    color: #000;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .profileCard {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    color: #29b969;
-    cursor: pointer;
-  }
-  .profileCard img {
-    background-color: #29b969;
-    border-radius: 8px;
-  }
 }
