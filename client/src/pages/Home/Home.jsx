@@ -8,6 +8,7 @@ import labCard from "./../../images/lab-services.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
   const faqData = [
@@ -150,6 +151,8 @@ const Home = () => {
           ))}
         </div>
       </section>
+
+      <Footer />
     </>
   );
 };

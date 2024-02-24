@@ -59,6 +59,11 @@ const Header = () => {
                     </a>
                   </li>
                   <li>
+                    <a className={styles.link} href="/home#faq">
+                      FAQ
+                    </a>
+                  </li>
+                  <li>
                     <a className={styles.link} href="/home#contact">
                       Contact
                     </a>
