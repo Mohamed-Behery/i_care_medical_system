@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Home.module.css";
 import doctorImg from "./../../images/hero-section-img.png";
 import doctorsImg from "./../../images/about-section-img.png";
@@ -10,6 +10,41 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
+  const faqData = [
+    {
+      question: "How secure is the platform for storing patient data?",
+      answer:
+        "Our system ensures high security standards for storing patient data. We use encryption and secure servers to protect sensitive information.",
+      isOpen: false,
+    },
+    {
+      question:
+        "Can I easily access patient records and history through the platform?",
+      answer:
+        "Yes, the system provides a user-friendly interface where you can easily access patient records, medical history, and treatment plans.",
+      isOpen: false,
+    },
+    {
+      question:
+        " Is there a feature for real-time communication with patients?",
+      answer:
+        " Yes, the platform includes a real-time chat feature that allows doctors to communicate with patients directly, enabling quick responses and efficient care.",
+      isOpen: false,
+    },
+  ];
+
+  const [faqList, setFaqList] = useState(faqData);
+
+  const toggleAccordion = (index) => {
+    const updatedFaqList = faqList.map((item, idx) => {
+      if (idx === index) {
+        return { ...item, isOpen: !item.isOpen };
+      } else {
+        return { ...item, isOpen: false };
+      }
+    });
+    setFaqList(updatedFaqList);
+  };
   return (
     <>
       {/*  HERO SECTION  */}
@@ -91,6 +126,28 @@ const Home = () => {
               cornerstone in healthcare delivery.
             </p>
           </div>
+        </div>
+      </section>
+      {/*  FAQ SECTION  */}
+      <section className={styles.faq}>
+        <h2>FAQ</h2>
+        <div className={styles.faqWrapper}>
+          {faqList.map((item, index) => (
+            <div className={styles.accordionItem} key={index}>
+              <div
+                className={styles.questionWrapper}
+                onClick={() => toggleAccordion(index)}
+              >
+                <div className={styles.question}>{item.question}</div>
+                <div className={styles.questionIcon}>
+                  {item.isOpen ? "-" : "+"}
+                </div>
+              </div>
+              {item.isOpen && (
+                <div className={styles.accordionContent}>{item.answer}</div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
     </>

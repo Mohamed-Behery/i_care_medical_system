@@ -39,31 +39,35 @@ const Header = () => {
         </Link>
         <nav className={`${!menuOpen ? styles.open : ""}`}>
           <ul>
-            {location.pathname !== "/reservations" && (
-              <>
-                <li>
-                  <a className={styles.link} href="/home">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a className={styles.link} href="/home#about">
-                    About US
-                  </a>
-                </li>
-                <li>
-                  <a className={styles.link} href="/home#services">
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a className={styles.link} href="/home#contact">
-                    Contact
-                  </a>
-                </li>
-              </>
-            )}
-            {location.pathname === "/reservations" && (
+            {location.pathname !== "/reservations" &&
+              location.pathname !== "/chat" &&
+              location.pathname !== "/profile" && (
+                <>
+                  <li>
+                    <a className={styles.link} href="/home">
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a className={styles.link} href="/home#about">
+                      About US
+                    </a>
+                  </li>
+                  <li>
+                    <a className={styles.link} href="/home#services">
+                      Services
+                    </a>
+                  </li>
+                  <li>
+                    <a className={styles.link} href="/home#contact">
+                      Contact
+                    </a>
+                  </li>
+                </>
+              )}
+            {(location.pathname === "/reservations" ||
+              location.pathname === "/chat" ||
+              location.pathname === "/profile") && (
               <>
                 <li>
                   <a className={styles.link} href="/home">
@@ -108,7 +112,9 @@ const Header = () => {
           </div>
         </div>
       )}
-      {(location.pathname === "/reservations" || location.pathname === "/profile") && (
+      {(location.pathname === "/reservations" ||
+        location.pathname === "/profile" ||
+        location.pathname === "/chat") && (
         <div className={styles.right}>
           <div className={styles.profileCard}>
             <img src={ProfileImg} alt="Profile" />
