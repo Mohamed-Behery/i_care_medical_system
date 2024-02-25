@@ -1,4 +1,5 @@
-.signupContainer, .loginContainer {
+.signupContainer,
+.loginContainer {
   height: calc(100vh - 76px);
 }
 .signup,
@@ -124,7 +125,21 @@ input[type="checkbox"] {
 .forgot:hover {
   text-decoration: underline;
 }
-
+.passwordContainer {
+  position: relative;
+}
+.passwordContainer input {
+  width: 100%;
+}
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+}
 @media screen and (max-width: 1090px) {
   .signup {
     min-height: 100dvh;

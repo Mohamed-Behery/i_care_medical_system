@@ -16,10 +16,15 @@ import ProfileImg from "./../../images/profile.svg";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(true);
+  const [profileMenu, setprofileMenu] = useState(false);
   const location = useLocation();
 
   const menuToggle = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const profileMenuToggle = () => {
+    setprofileMenu(!profileMenu);
   };
 
   return (
@@ -121,11 +126,21 @@ const Header = () => {
         location.pathname === "/profile" ||
         location.pathname === "/chat") && (
         <div className={styles.right}>
-          <div className={styles.profileCard}>
+          <div className={styles.profileCard} onClick={profileMenuToggle}>
             <img src={ProfileImg} alt="Profile" />
             <span>Carter Smith</span>
             <FontAwesomeIcon icon={faAngleDown} />
           </div>
+          {profileMenu && (
+            <div className={`${styles.profileMenu} ${styles.profileMenu}`}>
+              <ul>
+                <li>
+                  <Link to={"/profile"} className={styles.link}>Profile</Link>
+                </li>
+                <li>Logout</li>
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </header>

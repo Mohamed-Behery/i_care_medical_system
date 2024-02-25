@@ -130,7 +130,7 @@ const Home = () => {
         </div>
       </section>
       {/*  FAQ SECTION  */}
-      <section className={styles.faq}>
+      <section className={styles.faq} id="faq">
         <h2>FAQ</h2>
         <div className={styles.faqWrapper}>
           {faqList.map((item, index) => (

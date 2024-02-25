@@ -86,10 +86,39 @@ nav ul {
   gap: 8px;
   color: #29b969;
   cursor: pointer;
+  user-select: none;
+  position: relative;
 }
 .profileCard img {
   background-color: #29b969;
   border-radius: 8px;
+}
+.profileMenu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 112px;
+  background-color: #fff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 8px;
+  z-index: 1000;
+}
+.profileMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.profileMenu ul li {
+  padding: 8px 16px;
+  color: #333;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.profileMenu ul li:hover {
+  background-color: #f0f0f0;
+  color: #29b969;
 }
 @media (max-width: 850px) {
   header {

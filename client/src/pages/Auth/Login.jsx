@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Auth.module.css";
 import loginImg from "./../../images/login.png";
 import { Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-const login = () => {
+const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -17,8 +25,18 @@ const login = () => {
             <h3>Login</h3>
             <label htmlFor="email">Email</label>
             <input id="email" name="email" type="email" />
-            <label htmlFor="password">Password</label>
-            <input id="password" name="password" type="password" />
+            <div className={styles.passwordContainer}>
+              <input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+              />
+              <FontAwesomeIcon
+                icon={showPassword ? faEyeSlash : faEye}
+                onClick={togglePasswordVisibility}
+                className={styles.passwordToggle}
+              />
+            </div>
             <div className={styles.loginFeatures}>
               <div>
                 <input type="checkbox" name="remember" id="remember" />
@@ -34,7 +52,7 @@ const login = () => {
               Login
             </button>
             <GoogleLogin
-              clientId="jblhjb"
+              clientId="680554552772-nta47dvlgkcqoba9p78ce0ng16faaj64.apps.googleusercontent.com"
               buttonText="Continue with Google"
               cookiePolicy={"single_host_origin"}
             />
@@ -51,4 +69,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

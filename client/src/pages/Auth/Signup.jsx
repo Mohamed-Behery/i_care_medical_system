@@ -79,8 +79,10 @@ const Signup = () => {
             )}
             {next === true && (
               <>
-                <label htmlFor="address">Address</label>
-                <input id="address" name="address" type="text" />
+                <label htmlFor="country">Country</label>
+                <input id="country" name="country" type="text" />
+                <label htmlFor="city">City</label>
+                <input id="city" name="city" type="text" />
                 <button
                   type="submit"
                   className={styles.btnSignup}
