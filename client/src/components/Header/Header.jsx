@@ -137,7 +137,7 @@ const Header = () => {
                 <li>
                   <Link to={"/profile"} className={styles.link}>Profile</Link>
                 </li>
-                <li>Logout</li>
+                <li><Link to={"/home"} className={styles.link}>Logout</Link></li>
               </ul>
             </div>
           )}

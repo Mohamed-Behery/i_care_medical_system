@@ -42,8 +42,11 @@
 }
 .profileInfoWrapper input,
 .profileInfoWrapper select {
-  cursor: not-allowed;
   background: #fff;
+}
+.profileInfoWrapper input:disabled,
+.profileInfoWrapper select:disabled {
+  cursor: not-allowed;
 }
 .nameInput,
 .phoneInput {
@@ -55,4 +58,19 @@
 }
 .countryCode {
   width: 15% !important;
+}
+.profileInfoWrapper button {
+  border: none;
+  outline: none;
+  background: #29b969;
+  padding: 8px 16px;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 8px;
+  margin-top: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.profileInfoWrapper button:hover {
+  background-color: #2ab468;
 }
