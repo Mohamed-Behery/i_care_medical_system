@@ -3,7 +3,8 @@
 .about,
 .services,
 .aboutContent,
-.cards {
+.cards,
+.app {
   margin-top: 64px;
 }
 h2 {
@@ -20,7 +21,8 @@ HERO SECTION
 -----------*/
 .hero .container,
 .aboutContent,
-.cards {
+.cards,
+.downloadAppContent {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -76,7 +78,7 @@ ABOUT US
   background-color: #f6f6f6;
   padding: 24px;
 }
-hr {
+.about hr {
   width: 50%;
   background-color: #29b969;
   height: 4px;
@@ -159,6 +161,66 @@ FAQ SECTION
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
+/* -----------
+DOWNLOAD APP SECTION
+-----------*/
+.appMockup {
+  border-bottom-right-radius: 48px;
+  border-bottom-left-radius: 48px;
+  background: url("./../../images/app-mockup.png");
+  width: 200px;
+  height: 530px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.appMockup::before {
+  content: "";
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #29b969;
+  border-radius: 50%;
+  z-index: -1;
+}
+.downloadAppContent .downloadAppText {
+  text-align: center;
+}
+.downloadAppText h4 {
+  font-size: 32px;
+  color: #333333;
+}
+.downloadAppText h4 span {
+  color: #29b969;
+}
+.downloadAppText hr {
+  margin: 16px 0;
+}
+.downloadAppText p {
+  font-size: 24px;
+  margin: 0 auto;
+}
+.downloadBtn {
+  display: inline-block;
+  background-color: #29b969;
+  color: #fff;
+  padding: 8px 16px;
+  margin-top: 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+.downloadBtn:hover {
+  background-color: #1d804c;
+}
+/* -----------
+RESPONSIVE
+-----------*/
 @media screen and (max-width: 767px) {
   .container {
     padding: 0 16px;
@@ -168,5 +230,8 @@ FAQ SECTION
   }
   h2 {
     font-size: 48px;
+  }
+  .appMockup {
+    order: 2;
   }
 }

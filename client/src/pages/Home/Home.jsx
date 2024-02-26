@@ -159,7 +159,26 @@ const Home = () => {
           </div>
         </div>
       </section>
-
+      {/*  DOWNLOAD APP SECTION  */}
+      <section className={styles.app} id="app">
+        <div className={styles.container}>
+          <h2>Download our app</h2>
+          <div className={styles.downloadAppContent}>
+            <div className={styles.appMockup}></div>
+            <div className={styles.downloadAppText}>
+              <h4>
+                Are you a patient? <br />
+                <span>Stay healthy with our app</span>
+              </h4>
+              <hr />
+              <p>Easy healthcare for anyone anytime</p>
+              <a href="/" className={styles.downloadBtn}>
+                Download Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
       <Footer />
     </>
   );
