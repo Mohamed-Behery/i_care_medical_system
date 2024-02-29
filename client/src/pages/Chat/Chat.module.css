@@ -31,6 +31,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 32px 16px 16px;
+  border-top: 1px solid #ddd;
 }
 .sendMessage input {
   width: 80%;
@@ -51,6 +52,22 @@
 }
 .chatDetails {
   flex: 3;
+}
+.chatDetailsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 32px;
+  gap: 32px;
+}
+.chatDetailsWrapper img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 16px;
+  border: 1px solid #ddd;
 }
 .searchBox {
   margin: 24px 0;

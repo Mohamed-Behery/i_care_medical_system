@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import ChatCard from "../../components/chatCard/ChatCard";
 import Message from "../../components/chatMessage/Message";
+import chatImg from "./../../images/chat-img.jpg";
 
 const Chat = () => {
   return (
@@ -59,7 +60,17 @@ const Chat = () => {
         </div>
       </div>
       <div className={styles.chatDetails}>
-        <div className={styles.chatDetailsWrapper}>Details</div>
+        <div className={styles.chatDetailsWrapper}>
+          <img src={chatImg} alt="Patient" />
+          <div className={styles.chatDetailsText}>
+            <h3>Mohamed Ahmed</h3>
+            <p>online</p>
+            <p>Reservation: Open</p>
+            <p>example@gmail.com</p>
+            <p>01012345678</p>
+            <p>Cairo, Egypt</p>
+          </div>
+        </div>
       </div>
     </div>
   );
