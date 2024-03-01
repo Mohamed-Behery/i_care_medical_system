@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Chat.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -7,9 +7,25 @@ import Message from "../../components/chatMessage/Message";
 import chatImg from "./../../images/chat-img.jpg";
 
 const Chat = () => {
+  const [showChats, setShowChats] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
+
+  const toggleMenu = () => {
+    setShowChats(!showChats);
+    setShowDetails(false);
+  };
+
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+    setShowChats(false);
+  };
   return (
     <div className={styles.chatContainer}>
-      <div className={styles.chatMenu}>
+      <div className={styles.toggleBtns}>
+        <button onClick={toggleMenu}>Chats</button>
+        <button onClick={toggleDetails}>Patient Details</button>
+      </div>
+      <div className={`${styles.chatMenu} ${showChats && styles.show}`}>
         <div className={styles.chatMenuWrapper}>
           <div className={styles.searchBox}>
             <input type="text" placeholder="Search ..." />
@@ -59,7 +75,7 @@ const Chat = () => {
           </div>
         </div>
       </div>
-      <div className={styles.chatDetails}>
+      <div className={`${styles.chatDetails} ${showDetails && styles.show}`}>
         <div className={styles.chatDetailsWrapper}>
           <img src={chatImg} alt="Patient" />
           <div className={styles.chatDetailsText}>

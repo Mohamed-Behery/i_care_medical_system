@@ -16,7 +16,7 @@ import ChatIcon from "./../../images/chat-icon.svg";
 import ProfileImg from "./../../images/profile.svg";
 
 const Nav = () => {
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [profileMenu, setprofileMenu] = useState(false);
   const location = useLocation();
 

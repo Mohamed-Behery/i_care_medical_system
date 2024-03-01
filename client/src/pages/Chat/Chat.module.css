@@ -1,7 +1,6 @@
 .chatContainer {
   height: calc(100dvh - 76px);
   display: flex;
-  /* background-color: #ddd; */
 }
 .chatContainer > div {
   padding: 0 16px;
@@ -15,6 +14,7 @@
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
   padding-right: 0 !important;
+  overflow-y: auto;
 }
 .chatBoxWrapper {
   display: flex;
@@ -85,14 +85,60 @@
   border: none;
   width: 100%;
 }
-
+.toggleBtns {
+  display: none;
+}
+.toggleBtns button {
+  background: transparent;
+  color: #2196f3;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 920px) {
+  .sendMessage input {
+    width: 70%;
+  }
+  .sendMessage button {
+    width: 25%;
+  }
+}
 @media screen and (max-width: 767px) {
+  .chatContainer {
+    flex-direction: column;
+  }
+  .toggleBtns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 8px 0;
+    width: 100%;
+  }
   .chatMenu,
   .chatDetails {
     display: none;
   }
+  .chatMenu.show,
+  .chatDetails.show {
+    display: block;
+  }
+  .chatDetails {
+    border-top: 1px solid #ddd;
+  }
+  .chatDetailsWrapper {
+    margin-bottom: 24px;
+  }
+  .chatDetailsWrapper img {
+    width: 100px;
+    height: 100px;
+  }
+  .chatBoxWrapper {
+    border-top: 1px solid #ddd;
+  }
   .messagesWrapper {
     scrollbar-width: none;
+    border-top: 1px solid #ddd;
   }
   .sendMessage {
     padding: 16px 8px 8px;
