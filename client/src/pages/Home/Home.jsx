@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Home.module.css";
 import doctorImg from "./../../images/hero-section-img.png";
 import doctorsImg from "./../../images/about-section-img.png";
@@ -11,6 +11,37 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
+  // Scroll Animation
+  const aboutRef = useRef(null);
+  const servicesRef = useRef(null);
+  const faqRef = useRef(null);
+  const appRef = useRef(null);
+
+  const handleScroll = () => {
+    const revealElement = (ref) => {
+      if (ref.current) {
+        const topPos = ref.current.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+        if (topPos < screenHeight * 0.8) {
+          ref.current.classList.add(styles.reveal);
+        }
+      }
+    };
+
+    revealElement(aboutRef);
+    revealElement(servicesRef);
+    revealElement(faqRef);
+    revealElement(appRef);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // FAQ
   const faqData = [
     {
       question: "How secure is the platform for storing patient data?",
@@ -75,7 +106,7 @@ const Home = () => {
       <section className={styles.about} id="about">
         <div className={styles.container}>
           <h2>About us</h2>
-          <div className={styles.aboutContent}>
+          <div className={styles.aboutContent} ref={aboutRef}>
             <div className={styles.left}>
               <img src={doctorsImg} alt="Doctor" />
             </div>
@@ -99,7 +130,7 @@ const Home = () => {
       <section className={styles.services} id="services">
         <div className={styles.container}>
           <h2>Our Services</h2>
-          <div className={styles.cards}>
+          <div className={styles.cards} ref={servicesRef}>
             <div className={styles.card}>
               <img src={doctorCard} alt="Doctor Services" />
               <h3>Doctor</h3>
@@ -139,7 +170,7 @@ const Home = () => {
       <section className={styles.faq} id="faq">
         <div className={styles.container}>
           <h2>FAQ</h2>
-          <div className={styles.faqWrapper}>
+          <div className={styles.faqWrapper} ref={faqRef}>
             {faqList.map((item, index) => (
               <div className={styles.accordionItem} key={index}>
                 <div
@@ -163,7 +194,7 @@ const Home = () => {
       <section className={styles.app} id="app">
         <div className={styles.container}>
           <h2>Download our app</h2>
-          <div className={styles.downloadAppContent}>
+          <div className={styles.downloadAppContent} ref={appRef}>
             <div className={styles.appMockup}></div>
             <div className={styles.downloadAppText}>
               <h4>
