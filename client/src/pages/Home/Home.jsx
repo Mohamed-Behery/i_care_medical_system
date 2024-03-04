@@ -7,7 +7,12 @@ import pharmacyCard from "./../../images/pharmacy-services.png";
 import labCard from "./../../images/lab-services.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faMapMarkerAlt,
+  faPhone,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
@@ -76,6 +81,10 @@ const Home = () => {
       }
     });
     setFaqList(updatedFaqList);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
   return (
     <>
@@ -210,6 +219,48 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/*  CONTACT SECTION  */}
+      <div id="contact" className={styles.contact}>
+        <h2>Contact us</h2>
+        <div className={styles.contactWrapper}>
+          <div className={styles.contactInfo}>
+            <div className={styles.contactItem}>
+              <FontAwesomeIcon icon={faMapMarkerAlt} className={styles.icon} />
+              <span>1234 Street Name, City, Country</span>
+            </div>
+            <div className={styles.contactItem}>
+              <FontAwesomeIcon icon={faPhone} className={styles.icon} />
+              <span>+123 456 7890</span>
+            </div>
+            <div className={styles.contactItem}>
+              <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
+              <span>info@example.com</span>
+            </div>
+          </div>
+            <form onSubmit={handleSubmit}>
+              <div className={styles.formGroup}>
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="message">Message:</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" className={styles.submitBtn}>
+                Send Message
+              </button>
+            </form>
+        </div>
+      </div>
       <Footer />
     </>
   );

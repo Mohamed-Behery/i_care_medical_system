@@ -15,7 +15,7 @@ import ReservationsIcon from "./../../images/reservations-icon.svg";
 import ChatIcon from "./../../images/chat-icon.svg";
 import ProfileImg from "./../../images/profile.svg";
 
-const Nav = () => {
+const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileMenu, setprofileMenu] = useState(false);
   const location = useLocation();
@@ -71,6 +71,11 @@ const Nav = () => {
                 <li className={styles.navItem}>
                   <a className={styles.link} href="/home#faq">
                     FAQ
+                  </a>
+                </li>
+                <li className={styles.navItem}>
+                  <a className={styles.link} href="/home#app">
+                    App
                   </a>
                 </li>
                 <li className={styles.navItem}>
@@ -160,4 +165,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default Header;

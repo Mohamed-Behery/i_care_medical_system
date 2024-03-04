@@ -4,7 +4,8 @@
 .services,
 .aboutContent,
 .cards,
-.app {
+.app,
+.contact {
   margin-top: 64px;
 }
 h2 {
@@ -34,7 +35,8 @@ HERO SECTION
 .hero .container,
 .aboutContent,
 .cards,
-.downloadAppContent {
+.downloadAppContent,
+.contactWrapper {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -102,7 +104,7 @@ ABOUT US
   font-size: 24px;
 }
 .about .left img {
-  width: 600px;
+  width: 500px;
 }
 
 /* -----------
@@ -112,10 +114,10 @@ SERVICES
   justify-content: center;
 }
 .card {
-  width: 380px;
-  min-height: 670px;
+  width: 350px;
+  min-height: 620px;
   border: 2px solid #29b969;
-  border-radius: 0 48px 0 48px;
+  border-radius: 0 50px 0 50px;
   box-shadow: 0px 10px 4px 0px rgba(0, 0, 0, 0.2);
 }
 .card img {
@@ -126,10 +128,11 @@ SERVICES
 .card h3 {
   text-align: center;
   color: #29b969;
-  margin: 16px 0;
+  margin: 4px 0;
 }
 .card p {
-  padding: 0 24px;
+  padding: 0 16px;
+  color: #333333;
 }
 /* -----------
 FAQ SECTION
@@ -231,8 +234,80 @@ DOWNLOAD APP SECTION
   background-color: #1d804c;
 }
 /* -----------
+CONTACT SECTION
+-----------*/
+.contact {
+  padding: 16px;
+  background-color: #f6f6f6;
+}
+.contactWrapper {
+  padding-bottom: 16px;
+}
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+}
+.contactItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.icon {
+  margin-right: 8px;
+}
+.contact form {
+  width: 40%;
+  max-width: 700px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+}
+.formGroup {
+  margin-bottom: 16px;
+}
+.contact label {
+  display: block;
+  margin-bottom: 8px;
+}
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+}
+.submitBtn {
+  background-color: #29b969;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.submitBtn:hover {
+  background-color: #218c58;
+}
+
+/* -----------
 RESPONSIVE
 -----------*/
+@media screen and (max-width: 920px) {
+  .appMockup {
+    width: 150px;
+    height: 450px;
+  }
+  .appMockup::before {
+    width: 200px;
+    height: 200px;
+  }
+  .contactWrapper {
+    flex-direction: column;
+  }
+  .contact form {
+    width: 90%;
+  }
+}
 @media screen and (max-width: 767px) {
   .container {
     padding: 0 16px;
@@ -245,5 +320,12 @@ RESPONSIVE
   }
   .appMockup {
     order: 2;
+  }
+  .contactWrapper {
+    justify-content: center;
+  }
+  .contactForm {
+    width: 100%;
+    margin-top: 16px;
   }
 }

@@ -1,18 +1,17 @@
 header {
-  background-color: #fff;
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 999;
-  height: 76px;
+  height: 64px;
 }
 .navBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 120px;
-  background-color: #fff;
+  padding: 0 120px;
 }
 .logo {
   height: 60px;
@@ -127,6 +126,9 @@ header {
 }
 
 @media (max-width: 1040px) {
+  header {
+    background-color: #fff;
+  }
   .navToggle {
     display: block;
   }
