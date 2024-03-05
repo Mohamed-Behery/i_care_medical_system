@@ -6,8 +6,9 @@ import GoogleLogin from "react-google-login";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-const Login = () => {
+const Login = (onGoogleLogin) => {
   const [showPassword, setShowPassword] = useState(false);
+  // const [userData, setUserData] = useState(null);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -16,6 +17,18 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  // const handleGoogleResponse = (response) => {
+  //   if (response.profileObj) {
+  //     const { name, email, imageUrl } = response.profileObj;
+  //     setUserData({ name, email, imageUrl });
+  //     onGoogleLogin({ name, email, imageUrl });
+  //   }
+  // };
+
+  // const handleGoogleFailure = (error) => {
+  //   console.error("Google Login failed:", error);
+  // };
 
   return (
     <div className={styles.loginContainer}>
@@ -54,6 +67,8 @@ const Login = () => {
             <GoogleLogin
               clientId="680554552772-nta47dvlgkcqoba9p78ce0ng16faaj64.apps.googleusercontent.com"
               buttonText="Continue with Google"
+              // onSuccess={handleGoogleResponse}
+              // onFailure={handleGoogleFailure}
               cookiePolicy={"single_host_origin"}
             />
             <p>
