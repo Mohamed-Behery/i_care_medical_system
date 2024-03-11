@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import styles from "./Auth.module.css";
 import loginImg from "./../../images/login.png";
 import { Link } from "react-router-dom";
-import GoogleLogin from "react-google-login";
+// import {
+//   GoogleLogin,
+//   GoogleOAuthProvider,
+//   useGoogleOAuth,
+// } from "@react-oauth/google";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = (onGoogleLogin) => {
   const [showPassword, setShowPassword] = useState(false);
-  // const [userData, setUserData] = useState(null);
+  // const [user, setUser] = useState(null);
+  // const { isSignedIn, setIsSignedIn } = useGoogleOAuth();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -18,19 +23,16 @@ const Login = (onGoogleLogin) => {
     e.preventDefault();
   };
 
-  // const handleGoogleResponse = (response) => {
-  //   if (response.profileObj) {
-  //     const { name, email, imageUrl } = response.profileObj;
-  //     setUserData({ name, email, imageUrl });
-  //     onGoogleLogin({ name, email, imageUrl });
-  //   }
+  // const handleSuccess = (response) => {
+  //   setUser(response.profileObj);
   // };
 
-  // const handleGoogleFailure = (error) => {
-  //   console.error("Google Login failed:", error);
+  // const handleError = (error) => {
+  //   console.error("Google login error:", error);
   // };
 
   return (
+    // <GoogleOAuthProvider clientId="680554552772-nta47dvlgkcqoba9p78ce0ng16faaj64.apps.googleusercontent.com">
     <div className={styles.loginContainer}>
       <div className={styles.login}>
         <div className={styles.left}>
@@ -64,13 +66,18 @@ const Login = (onGoogleLogin) => {
             >
               Login
             </button>
-            <GoogleLogin
-              clientId="680554552772-nta47dvlgkcqoba9p78ce0ng16faaj64.apps.googleusercontent.com"
-              buttonText="Continue with Google"
-              // onSuccess={handleGoogleResponse}
-              // onFailure={handleGoogleFailure}
-              cookiePolicy={"single_host_origin"}
-            />
+            {/* {isSignedIn || user ? (
+                <div>
+                  <p>Name: {setIsSignedIn.name}</p>
+                  <p>Email: {setIsSignedIn.email}</p>
+                </div>
+              ) : (
+                <GoogleLogin
+                  onSuccess={handleSuccess}
+                  onFailure={handleError}
+                  buttonText="Login with Google"
+                />
+              )} */}
             <p>
               Don't have an account?<Link to="/signup">Signup</Link>
             </p>
@@ -81,6 +88,7 @@ const Login = (onGoogleLogin) => {
         </div>
       </div>
     </div>
+    // </GoogleOAuthProvider>
   );
 };
 

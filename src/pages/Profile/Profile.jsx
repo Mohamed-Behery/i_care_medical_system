@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styles from "./Profile.module.css";
 import profileImg from "./../../images/profile.svg";
+import Login from "../../pages/Auth/Login";
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
+  const [user, setUser] = useState(null);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -13,11 +15,29 @@ const Profile = () => {
     setIsEditing(false);
   };
 
+  const handleGoogleLogin = (userData) => {
+    setUser(userData);
+  };
+
   return (
     <>
       <h2 className={styles.profileTitle}>Profile Info</h2>
+
+
       <div className={styles.profileWrapper}>
         <div className={styles.profileInfoWrapper}>
+          {user ? (
+            <div>
+              <img src={user.imageUrl} alt="Profile" />
+              <div>Name: {user.name}</div>
+              <div>Email: {user.email}</div>
+            </div>
+          ) : (
+            <div>
+              <p>Please log in with Google to view your profile.</p>
+              <Login onGoogleLogin={handleGoogleLogin} />
+            </div>
+          )}
           <div className={styles.infoLeft}>
             <div className={styles.imgWrapper}>
               <img src={profileImg} alt="Profile" />
@@ -27,7 +47,7 @@ const Profile = () => {
                 name="profile-img"
                 id="profile-img"
                 disabled={!isEditing}
-              />
+                />
             </div>
             <div className={styles.nameInput}>
               <div>

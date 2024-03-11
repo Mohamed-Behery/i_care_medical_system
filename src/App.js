@@ -6,10 +6,12 @@ import Login from "./pages/Auth/Login";
 import Profile from "./pages/Profile/Profile";
 import Reservations from "./pages/Reservations/Reservations";
 import Chat from "./pages/Chat/Chat";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   return (
     <>
+      {/* <GoogleOAuthProvider clientId="680554552772-nta47dvlgkcqoba9p78ce0ng16faaj64.apps.googleusercontent.com"> */}
       <Header />
       <Routes>
         <Route path="/" exact element={Home()} />
@@ -20,6 +22,7 @@ function App() {
         <Route path="/reservations" element={Reservations()} />
         <Route path="/chat" element={Chat()} />
       </Routes>
+      {/* </GoogleOAuthProvider> */}
     </>
   );
 }
