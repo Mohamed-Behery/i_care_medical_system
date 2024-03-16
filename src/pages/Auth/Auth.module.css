@@ -141,6 +141,9 @@ input[type="checkbox"] {
   cursor: pointer;
   user-select: none;
 }
+.btnGoogle {
+  margin: 8px auto 0;
+}
 @media screen and (max-width: 1090px) {
   .signup {
     min-height: 100dvh;

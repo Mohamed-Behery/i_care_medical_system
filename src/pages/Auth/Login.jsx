@@ -1,19 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Auth.module.css";
 import loginImg from "./../../images/login.png";
-import { Link } from "react-router-dom";
-// import {
-//   GoogleLogin,
-//   GoogleOAuthProvider,
-//   useGoogleOAuth,
-// } from "@react-oauth/google";
+import { Link, useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-const Login = (onGoogleLogin) => {
+const Login = ({ onGoogleLogin, isLoggedIn }) => {
   const [showPassword, setShowPassword] = useState(false);
-  // const [user, setUser] = useState(null);
-  // const { isSignedIn, setIsSignedIn } = useGoogleOAuth();
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -21,18 +17,32 @@ const Login = (onGoogleLogin) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate("/profile");
   };
 
-  // const handleSuccess = (response) => {
-  //   setUser(response.profileObj);
-  // };
+  const handleSuccess = (response) => {
+    if (response) {
+      const decoded = jwtDecode(response?.credential);
+      localStorage.setItem("token", response.credential);
+      if (onGoogleLogin) {
+        onGoogleLogin(decoded);
+      }
+      // navigate("/profile", { replace: true });
+      // console.log("Google login success:", decoded);
+    }
+  };
 
-  // const handleError = (error) => {
-  //   console.error("Google login error:", error);
-  // };
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate.push("/profile", { replace: true });
+    }
+  }, [isLoggedIn, navigate]);
+
+  const handleError = (error) => {
+    console.error("Google login error:", error);
+  };
 
   return (
-    // <GoogleOAuthProvider clientId="680554552772-nta47dvlgkcqoba9p78ce0ng16faaj64.apps.googleusercontent.com">
     <div className={styles.loginContainer}>
       <div className={styles.login}>
         <div className={styles.left}>
@@ -66,18 +76,14 @@ const Login = (onGoogleLogin) => {
             >
               Login
             </button>
-            {/* {isSignedIn || user ? (
-                <div>
-                  <p>Name: {setIsSignedIn.name}</p>
-                  <p>Email: {setIsSignedIn.email}</p>
-                </div>
-              ) : (
-                <GoogleLogin
-                  onSuccess={handleSuccess}
-                  onFailure={handleError}
-                  buttonText="Login with Google"
-                />
-              )} */}
+            <div className={styles.btnGoogle}>
+              <GoogleLogin
+                onSuccess={handleSuccess}
+                onFailure={handleError}
+                buttonText="Login with Google"
+                cookiePolicy={"single_host_origin"}
+              />
+            </div>
             <p>
               Don't have an account?<Link to="/signup">Signup</Link>
             </p>
@@ -88,7 +94,6 @@ const Login = (onGoogleLogin) => {
         </div>
       </div>
     </div>
-    // </GoogleOAuthProvider>
   );
 };
 

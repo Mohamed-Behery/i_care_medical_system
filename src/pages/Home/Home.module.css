@@ -71,7 +71,8 @@ HERO SECTION
   padding: 8px 16px;
   border-radius: 24px;
 }
-.signup {
+.signup,
+.profile {
   color: #fff;
   background-color: #29b969;
   border-radius: 24px;

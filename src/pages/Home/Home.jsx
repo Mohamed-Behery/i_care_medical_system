@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../../components/Footer/Footer";
 
-const Home = () => {
+const Home = ({ userData }) => {
   // Scroll Animation
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
@@ -97,13 +97,28 @@ const Home = () => {
             </h1>
             <p>Helps the doctor in the management of reservations</p>
             <div className={styles.heroBtns}>
-              <Link className={styles.signup} to="/signup">
-                Sign up
-              </Link>
-              <Link className={styles.login} to="/login">
-                Login
-                <FontAwesomeIcon className={styles.arrow} icon={faArrowRight} />
-              </Link>
+              {!userData ? (
+                <>
+                  <Link className={styles.signup} to="/signup">
+                    Sign up
+                  </Link>
+                  <Link className={styles.login} to="/login">
+                    Login
+                    <FontAwesomeIcon
+                      className={styles.arrow}
+                      icon={faArrowRight}
+                    />
+                  </Link>
+                </>
+              ) : (
+                <Link className={styles.profile} to="/profile">
+                  Profile
+                  <FontAwesomeIcon
+                    className={styles.arrow}
+                    icon={faArrowRight}
+                  />
+                </Link>
+              )}
             </div>
           </div>
           <div className={styles.right}>
@@ -237,28 +252,28 @@ const Home = () => {
               <span>info@example.com</span>
             </div>
           </div>
-            <form onSubmit={handleSubmit}>
-              <div className={styles.formGroup}>
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div className={styles.formGroup}>
-                <label htmlFor="message">Message:</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" className={styles.submitBtn}>
-                Send Message
-              </button>
-            </form>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.formGroup}>
+              <label htmlFor="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="message">Message:</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" className={styles.submitBtn}>
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
       <Footer />

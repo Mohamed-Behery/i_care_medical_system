@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import LogoIcon from "./../../images/logo-icon.png";
 import LogoText from "./../../images/logo-text.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,12 +13,13 @@ import styles from "./Header.module.css";
 import HomeIcon from "./../../images/home-icon.svg";
 import ReservationsIcon from "./../../images/reservations-icon.svg";
 import ChatIcon from "./../../images/chat-icon.svg";
-import ProfileImg from "./../../images/profile.svg";
+// import ProfileImg from "./../../images/profile.svg";
 
-const Header = () => {
+const Header = ({ userData }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileMenu, setprofileMenu] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const menuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -26,6 +27,11 @@ const Header = () => {
 
   const profileMenuToggle = () => {
     setprofileMenu(!profileMenu);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/home");
   };
 
   return (
@@ -85,31 +91,29 @@ const Header = () => {
                 </li>
               </>
             )}
-          {(location.pathname === "/reservations" ||
-            location.pathname === "/chat" ||
-            location.pathname === "/profile") && (
-            <>
-              <li className={styles.navItem}>
-                <a className={styles.link} href="/home">
-                  <img src={HomeIcon} alt="Home" />
-                </a>
-              </li>
-              <li className={styles.navItem}>
-                <a className={styles.link} href="/reservations">
-                  <img src={ReservationsIcon} alt="Reservations" />
-                </a>
-              </li>
-              <li className={styles.navItem}>
-                <a className={styles.link} href="/chat">
-                  <img src={ChatIcon} alt="Chat" />
-                </a>
-              </li>
-            </>
-          )}
+          {userData &&
+            location.pathname !== "/" &&
+            location.pathname !== "/home" && (
+              <>
+                <li className={styles.navItem}>
+                  <a className={styles.link} href="/home">
+                    <img src={HomeIcon} alt="Home" />
+                  </a>
+                </li>
+                <li className={styles.navItem}>
+                  <a className={styles.link} href="/reservations">
+                    <img src={ReservationsIcon} alt="Reservations" />
+                  </a>
+                </li>
+                <li className={styles.navItem}>
+                  <a className={styles.link} href="/chat">
+                    <img src={ChatIcon} alt="Chat" />
+                  </a>
+                </li>
+              </>
+            )}
           <li className={styles.navItem}>
-            {(location.pathname === "/home" ||
-              location.pathname === "/" ||
-              !location.pathname) && (
+            {!userData && (
               <div className={styles.rightLinks}>
                 <Link
                   className={[styles.link, styles.login].join(" ")}
@@ -129,13 +133,11 @@ const Header = () => {
                 </Link>
               </div>
             )}
-            {(location.pathname === "/reservations" ||
-              location.pathname === "/profile" ||
-              location.pathname === "/chat") && (
+            {userData && (
               <>
                 <div className={styles.profileCard} onClick={profileMenuToggle}>
-                  <img src={ProfileImg} alt="Profile" />
-                  <span>Carter Smith</span>
+                  <img src={userData?.picture} alt="Profile" />
+                  <span>{userData?.name}</span>
                   <FontAwesomeIcon icon={faAngleDown} />
                 </div>
                 {profileMenu && (
@@ -149,9 +151,12 @@ const Header = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link to={"/home"} className={styles.link}>
+                        <button
+                          className={`${styles.link} ${styles.logout}`}
+                          onClick={handleLogout}
+                        >
                           Logout
-                        </Link>
+                        </button>
                       </li>
                     </ul>
                   </div>

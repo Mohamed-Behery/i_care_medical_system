@@ -23,7 +23,7 @@
   margin-top: 24px;
 }
 .profileWrapper img {
-  background-color: #29b969;
+  /* background-color: #29b969; */
   border-radius: 16px;
   width: 88px;
 }
@@ -73,4 +73,19 @@
 }
 .profileInfoWrapper button:hover {
   background-color: #2ab468;
+}
+.passwordContainer {
+  position: relative;
+}
+.passwordContainer input {
+  width: 100%;
+}
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  color: #333;
+  cursor: pointer;
+  user-select: none;
 }

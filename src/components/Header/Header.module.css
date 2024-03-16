@@ -39,23 +39,18 @@ header {
 .navItem {
   margin-left: 20px;
 }
-.link {
+.link,
+.logout {
   text-decoration: none;
   color: #333;
   display: flex;
   align-items: center;
-  transition: color 0.2s;
-}
-.link:hover {
-  color: #29b969;
-}
-.link {
-  color: #000;
   text-decoration: none;
   margin: 0 10px;
-  transition: all 0.2s;
+  transition: color 0.2s;
 }
-.link:hover {
+.link:hover,
+.logout:hover {
   color: #29b969;
 }
 .rightLinks {
@@ -65,7 +60,6 @@ header {
 }
 .login {
   color: #29b969;
-  font-weight: 600;
 }
 .signup {
   color: #fff;
@@ -77,6 +71,13 @@ header {
 }
 .signup:hover {
   color: #fff;
+}
+.logout {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
 }
 .arrow {
   margin-left: 8px;
@@ -94,9 +95,11 @@ header {
   user-select: none;
 }
 .profileCard img {
-  background-color: #29b969;
+  /* background-color: #29b969; */
   border-radius: 8px;
   position: relative;
+  max-width: 40px;
+  max-height: 40px;
 }
 .profileMenu {
   display: block;
