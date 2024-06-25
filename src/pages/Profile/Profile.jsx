@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Profile = ({ userData }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [doctorData, setDoctorData] = useState(null);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -18,6 +19,23 @@ const Profile = ({ userData }) => {
       setLastName(last);
     }
   }, [userData]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://icare44.infinityfreeapp.com/api/clinic"
+        );
+        const data = await response.json();
+        console.log(data);
+        setDoctorData(data);
+      } catch (error) {
+        console.error("Error fetching doctor data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -35,6 +53,8 @@ const Profile = ({ userData }) => {
     <>
       <>
         <h2 className={styles.profileTitle}>Profile Info</h2>
+        {/* userData={doctorData} */}
+        {/* userData={doctorData ? doctorData : {}} */}
         <div className={styles.profileWrapper}>
           <div className={styles.profileInfoWrapper}>
             <div className={styles.infoLeft}>

@@ -6,8 +6,13 @@ import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import api from "../../ApiConnection";
 
-const Login = ({ onGoogleLogin, isLoggedIn }) => {
+const Login = ({ userData, setUserData, isLoggedIn, setIsLoggedIn }) => {
+  const [credentials, setCredentials] = useState({
+    email: "",
+    pass: "",
+  });
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -15,28 +20,35 @@ const Login = ({ onGoogleLogin, isLoggedIn }) => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/profile");
+    try {
+      const response = await api.post("/login", credentials);
+      const decoded = jwtDecode(response?.credential);
+      localStorage.setItem("token", response.credential);
+      setUserData(decoded);
+      setIsLoggedIn(true);
+      console.log("Login successful", response.data);
+    } catch (error) {
+      console.error("Login failed", error);
+    }
   };
 
   const handleSuccess = (response) => {
     if (response) {
       const decoded = jwtDecode(response?.credential);
       localStorage.setItem("token", response.credential);
-      if (onGoogleLogin) {
-        onGoogleLogin(decoded);
-      }
-      // navigate("/profile", { replace: true });
-      // console.log("Google login success:", decoded);
+      setUserData(decoded);
+      setIsLoggedIn(true);
+      navigate("/home", { replace: true });
     }
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
-      navigate.push("/profile", { replace: true });
+    if (isLoggedIn && userData) {
+      navigate("/home", { replace: true });
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn, userData, navigate]);
 
   const handleError = (error) => {
     console.error("Google login error:", error);
@@ -49,7 +61,15 @@ const Login = ({ onGoogleLogin, isLoggedIn }) => {
           <form>
             <h3>Login</h3>
             <label htmlFor="email">Email</label>
-            <input id="email" name="email" type="email" />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={credentials.email}
+              onChange={(e) =>
+                setCredentials({ ...credentials, email: e.target.value })
+              }
+            />
             <div className={styles.passwordContainer}>
               <input
                 id="password"

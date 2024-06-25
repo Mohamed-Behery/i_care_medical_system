@@ -3,10 +3,28 @@ header {
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
+  left: 0;
+  height: 64px;
   width: 100%;
   z-index: 999;
-  height: 64px;
+  transition: transform 0.2s ease-in-out;
 }
+
+.header-hidden {
+  transform: translateY(-100%);
+}
+.active {
+  display: block !important;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hidden {
+  display: none !important;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
 .navBar {
   display: flex;
   justify-content: space-between;
@@ -98,13 +116,17 @@ header {
   /* background-color: #29b969; */
   border-radius: 8px;
   position: relative;
+  bottom: 2px;
   max-width: 40px;
   max-height: 40px;
+  object-fit: cover;
+  margin-right: 8px;
 }
 .profileMenu {
   display: block;
   position: absolute;
   top: 100%;
+  right: 6%;
   background-color: #fff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -128,7 +150,7 @@ header {
   color: #29b969;
 }
 
-@media (max-width: 1040px) {
+@media (max-width: 1405px) {
   header {
     background-color: #fff;
   }
@@ -146,6 +168,14 @@ header {
     width: 100%;
     z-index: 999;
     display: none;
+  }
+  .navList li {
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .profileMenu {
+    right: 40%;
   }
   .navList.active {
     display: flex;

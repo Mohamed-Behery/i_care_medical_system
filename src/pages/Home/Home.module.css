@@ -68,17 +68,17 @@ HERO SECTION
 .heroBtns a {
   font-weight: 600;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 8px 20px;
   border-radius: 24px;
+  font-size: 18px;
 }
 .signup,
-.profile {
+.reservations {
   color: #fff;
   background-color: #29b969;
-  border-radius: 24px;
-  padding: 8px 16px;
 }
-.login {
+.login,
+.profile {
   color: #29b969;
   border: 2px solid #29b969;
 }

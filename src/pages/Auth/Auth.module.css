@@ -21,6 +21,9 @@
 .login .left {
   background: #29b969;
 }
+.signup .right {
+  align-items: flex-start;
+}
 .signup .left img,
 .login .right img {
   width: 600px;
@@ -36,6 +39,10 @@ form {
   gap: 8px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+}
+.signup .right form {
+  padding: 8px 16px;
+  margin-top: 16px;
 }
 h3 {
   color: #333333;
@@ -54,6 +61,10 @@ input:focus,
 select:focus {
   outline: none;
   border: 1px solid #333;
+}
+.signup .right form input,
+.signup .right form select {
+  padding: 4px 12px;
 }
 label {
   color: #333333;

@@ -111,13 +111,18 @@ const Home = ({ userData }) => {
                   </Link>
                 </>
               ) : (
-                <Link className={styles.profile} to="/profile">
-                  Profile
-                  <FontAwesomeIcon
-                    className={styles.arrow}
-                    icon={faArrowRight}
-                  />
-                </Link>
+                <>
+                  <Link className={styles.reservations} to="/reservations">
+                    Reservations
+                  </Link>
+                  <Link className={styles.profile} to="/chat">
+                    Chat
+                    <FontAwesomeIcon
+                      className={styles.arrow}
+                      icon={faArrowRight}
+                    />
+                  </Link>
+                </>
               )}
             </div>
           </div>

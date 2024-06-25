@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LogoIcon from "./../../images/logo-icon.png";
 import LogoText from "./../../images/logo-text.png";
@@ -15,11 +15,27 @@ import ReservationsIcon from "./../../images/reservations-icon.svg";
 import ChatIcon from "./../../images/chat-icon.svg";
 // import ProfileImg from "./../../images/profile.svg";
 
-const Header = ({ userData }) => {
+const Header = ({ userData, setUserData, setIsLoggedIn }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileMenu, setprofileMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const [isHidden, setIsHidden] = useState(false);
+  const [scrollPos, setScrollPos] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY;
+    const isScrollingDown = currentScrollPos > scrollPos;
+    setIsHidden(isScrollingDown);
+    setScrollPos(currentScrollPos);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollPos]);
 
   const menuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -31,11 +47,15 @@ const Header = ({ userData }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    setUserData(null);
+    setIsLoggedIn(false);
     navigate("/home");
   };
 
   return (
-    <header>
+    <header
+      className={`${styles.header} ${isHidden ? styles["header-hidden"] : ""}`}
+    >
       <div className={styles.navBar}>
         <Link className={styles.logoWrapper} to="/home">
           <img
@@ -53,11 +73,11 @@ const Header = ({ userData }) => {
         <div className={styles.navToggle} onClick={menuToggle}>
           <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
         </div>
-
         <ul className={`${styles.navList} ${menuOpen ? styles.active : ""}`}>
           {location.pathname !== "/reservations" &&
             location.pathname !== "/chat" &&
-            location.pathname !== "/profile" && (
+            location.pathname !== "/profile" &&
+            !userData && (
               <>
                 <li className={styles.navItem}>
                   <a className={styles.link} href="/home">
@@ -91,54 +111,59 @@ const Header = ({ userData }) => {
                 </li>
               </>
             )}
-          {userData &&
-            location.pathname !== "/" &&
-            location.pathname !== "/home" && (
-              <>
-                <li className={styles.navItem}>
-                  <a className={styles.link} href="/home">
-                    <img src={HomeIcon} alt="Home" />
-                  </a>
-                </li>
-                <li className={styles.navItem}>
-                  <a className={styles.link} href="/reservations">
-                    <img src={ReservationsIcon} alt="Reservations" />
-                  </a>
-                </li>
-                <li className={styles.navItem}>
-                  <a className={styles.link} href="/chat">
-                    <img src={ChatIcon} alt="Chat" />
-                  </a>
-                </li>
-              </>
-            )}
+          {userData && (
+            <>
+              <li className={styles.navItem}>
+                <a className={styles.link} href="/home">
+                  <img src={HomeIcon} alt="Home" />
+                </a>
+              </li>
+              <li className={styles.navItem}>
+                <a className={styles.link} href="/reservations">
+                  <img src={ReservationsIcon} alt="Reservations" />
+                </a>
+              </li>
+              <li className={styles.navItem}>
+                <a className={styles.link} href="/chat">
+                  <img src={ChatIcon} alt="Chat" />
+                </a>
+              </li>
+            </>
+          )}
           <li className={styles.navItem}>
-            {!userData && (
-              <div className={styles.rightLinks}>
-                <Link
-                  className={[styles.link, styles.login].join(" ")}
-                  to="/login"
-                >
-                  Login
-                </Link>
-                <Link
-                  className={[styles.link, styles.signup].join(" ")}
-                  to="/signup"
-                >
-                  Sign up
-                  <FontAwesomeIcon
-                    className={styles.arrow}
-                    icon={faArrowRight}
-                  />
-                </Link>
-              </div>
-            )}
+            {!userData &&
+              location.pathname !== "/login" &&
+              location.pathname !== "/signup" && (
+                <div className={styles.rightLinks}>
+                  <Link
+                    className={[styles.link, styles.login].join(" ")}
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    className={[styles.link, styles.signup].join(" ")}
+                    to="/signup"
+                  >
+                    Sign up
+                    <FontAwesomeIcon
+                      className={styles.arrow}
+                      icon={faArrowRight}
+                    />
+                  </Link>
+                </div>
+              )}
             {userData && (
               <>
-                <div className={styles.profileCard} onClick={profileMenuToggle}>
-                  <img src={userData?.picture} alt="Profile" />
-                  <span>{userData?.name}</span>
-                  <FontAwesomeIcon icon={faAngleDown} />
+                <div className={styles.profileCard}>
+                  <Link to={"/home"} className={styles.link}>
+                    <img src={userData?.picture} alt="Profile" />
+                    <span>{userData?.name}</span>
+                  </Link>
+                  <FontAwesomeIcon
+                    icon={faAngleDown}
+                    onClick={profileMenuToggle}
+                  />
                 </div>
                 {profileMenu && (
                   <div

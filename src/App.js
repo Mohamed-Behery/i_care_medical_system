@@ -25,7 +25,11 @@ function App() {
 
   return (
     <>
-      <Header userData={userData} />
+      <Header
+        userData={userData}
+        setUserData={setUserData}
+        setIsLoggedIn={setIsLoggedIn}
+      />
       <Routes>
         <Route path="/" element={<Home userData={userData} />} exact={true} />
         <Route path="/home" element={<Home userData={userData} />} />
@@ -39,7 +43,12 @@ function App() {
             isLoggedIn ? (
               <Navigate to="/profile" replace />
             ) : (
-              <Login onGoogleLogin={userData} isLoggedIn={isLoggedIn} />
+              <Login
+                userData={userData}
+                setUserData={setUserData}
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+              />
             )
           }
         />
