@@ -24,7 +24,7 @@ const Profile = ({ userData }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://icare44.infinityfreeapp.com/api/clinic"
+          "https://icare48.000webhostapp.com/api/clinic"
         );
         const data = await response.json();
         console.log(data);

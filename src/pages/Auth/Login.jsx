@@ -6,7 +6,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import api from "../../ApiConnection";
+import axios from "axios";
 
 const Login = ({ userData, setUserData, isLoggedIn, setIsLoggedIn }) => {
   const [credentials, setCredentials] = useState({
@@ -23,12 +23,17 @@ const Login = ({ userData, setUserData, isLoggedIn, setIsLoggedIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/login", credentials);
-      const decoded = jwtDecode(response?.credential);
-      localStorage.setItem("token", response.credential);
+      console.log("Sending request with credentials:", credentials);
+      const response = await axios.post(
+        "https://icare48.000webhostapp.com/api/clinic/login",
+        credentials
+      );
+      const decoded = jwtDecode(response.data.token);
+      localStorage.setItem("token", response.data.token);
       setUserData(decoded);
       setIsLoggedIn(true);
       console.log("Login successful", response.data);
+      navigate("/home", { replace: true });
     } catch (error) {
       console.error("Login failed", error);
     }
@@ -73,7 +78,11 @@ const Login = ({ userData, setUserData, isLoggedIn, setIsLoggedIn }) => {
             <div className={styles.passwordContainer}>
               <input
                 id="password"
-                name="password"
+                name="pass"
+                value={credentials.pass}
+                onChange={(e) =>
+                  setCredentials({ ...credentials, pass: e.target.value })
+                }
                 type={showPassword ? "text" : "password"}
               />
               <FontAwesomeIcon
