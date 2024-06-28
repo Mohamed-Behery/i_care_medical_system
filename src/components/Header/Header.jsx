@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LogoIcon from "./../../images/logo-icon.png";
 import LogoText from "./../../images/logo-text.png";
@@ -23,6 +23,8 @@ const Header = ({ userData, setUserData, setIsLoggedIn }) => {
   const [isHidden, setIsHidden] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
 
+  const profileMenuRef = useRef(null);
+
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
     const isScrollingDown = currentScrollPos > scrollPos;
@@ -43,6 +45,26 @@ const Header = ({ userData, setUserData, setIsLoggedIn }) => {
 
   const profileMenuToggle = () => {
     setprofileMenu(!profileMenu);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        profileMenuRef.current &&
+        !profileMenuRef.current.contains(event.target)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleLinkClick = () => {
+    setMenuOpen(false);
   };
 
   const handleLogout = () => {
@@ -171,15 +193,16 @@ const Header = ({ userData, setUserData, setIsLoggedIn }) => {
                   >
                     <ul>
                       <li>
-                        <Link to={"/profile"} className={styles.link}>
+                        <Link
+                          to={"/profile"}
+                          className={styles.link}
+                          onClick={handleLinkClick}
+                        >
                           Profile
                         </Link>
                       </li>
-                      <li>
-                        <button
-                          className={`${styles.link} ${styles.logout}`}
-                          onClick={handleLogout}
-                        >
+                      <li onClick={handleLogout}>
+                        <button className={`${styles.link} ${styles.logout}`}>
                           Logout
                         </button>
                       </li>

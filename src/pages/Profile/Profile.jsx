@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Profile.module.css";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import profileImg from "./../../images/profile.svg";
+import profileImg from "./../../images/profile.svg";
 
 const Profile = ({ userData }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -49,12 +49,21 @@ const Profile = ({ userData }) => {
     setIsEditing(false);
   };
 
+  const stars = Array.from({ length: 5 }, (_, index) => (
+    <FontAwesomeIcon
+      key={index}
+      icon={faStar}
+      className="star"
+      style={{ color: "#ffd700" }}
+    />
+  ));
+
   return (
     <>
       <>
         <h2 className={styles.profileTitle}>Profile Info</h2>
-        {/* userData={doctorData} */}
-        {/* userData={doctorData ? doctorData : {}} */}
+        {/* userData={doctorData}
+        userData={doctorData ? doctorData : {}} */}
         <div className={styles.profileWrapper}>
           <div className={styles.profileInfoWrapper}>
             <div className={styles.infoLeft}>
@@ -103,28 +112,6 @@ const Profile = ({ userData }) => {
                 <option value="urology">Urology</option>
                 <option value="radiology">Radiology</option>
               </select>
-              <label htmlFor="country">Country</label>
-              <input type="text" id="Country" disabled={!isEditing} />
-              <label htmlFor="city">City</label>
-              <input type="text" id="city" disabled={!isEditing} />
-            </div>
-            <div className={styles.infoRight}>
-              <label htmlFor="phone">Phone Number</label>
-              <div className={styles.phoneInput}>
-                <input
-                  id="countryCode"
-                  name="countryCode"
-                  className={styles.countryCode}
-                  type="text"
-                  disabled={!isEditing}
-                />
-                <input
-                  id="phone"
-                  name="phone"
-                  type="text"
-                  disabled={!isEditing}
-                />
-              </div>
               <label htmlFor="email">Email</label>
               <input
                 id="email"
@@ -147,14 +134,53 @@ const Profile = ({ userData }) => {
                   className={styles.passwordToggle}
                 />
               </div>
-              <div className={styles.buttonContainer}>
-                {!isEditing ? (
-                  <button onClick={handleEditClick}>Edit Profile</button>
-                ) : (
-                  <button onClick={handleSaveClick}>Save Changes</button>
-                )}
-              </div>
             </div>
+            <div className={styles.infoRight}>
+              <label htmlFor="address">Address</label>
+              <input type="text" id="address" disabled={!isEditing} />
+              <label htmlFor="phone">Phone Number</label>
+              <div className={styles.phoneInput}>
+                <input
+                  id="countryCode"
+                  name="countryCode"
+                  className={styles.countryCode}
+                  type="text"
+                  disabled={!isEditing}
+                />
+                <input
+                  id="phone"
+                  name="phone"
+                  type="text"
+                  disabled={!isEditing}
+                />
+              </div>
+              <label htmlFor="experience">Experience</label>
+              <input type="text" id="experience" disabled={!isEditing} />
+              <label htmlFor="work-time">Work Time</label>
+              <input type="text" id="work-time" disabled={!isEditing} />
+              <label htmlFor="description">Description</label>
+              <input type="text" id="description" disabled={!isEditing} />
+              <label htmlFor="certificate">
+                Professional Practice Certificate
+              </label>
+              <div className="certificateWrapper">
+                <img
+                  src={profileImg}
+                  className="certificateImg"
+                  alt="certificate"
+                />
+                <input type="file" id="certificate" disabled={!isEditing} />
+              </div>
+              <label htmlFor="rating">Rating</label>
+              <div className="rating">{stars}</div>
+            </div>
+          </div>
+          <div className={styles.buttonContainer}>
+            {!isEditing ? (
+              <button onClick={handleEditClick}>Edit Profile</button>
+            ) : (
+              <button onClick={handleSaveClick}>Save Changes</button>
+            )}
           </div>
         </div>
       </>

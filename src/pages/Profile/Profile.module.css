@@ -22,8 +22,7 @@
   flex-wrap: wrap;
   margin-top: 24px;
 }
-.profileWrapper img {
-  /* background-color: #29b969; */
+.profileWrapper .imgWrapper img {
   border-radius: 16px;
   width: 88px;
 }
@@ -59,7 +58,10 @@
 .countryCode {
   width: 15% !important;
 }
-.profileInfoWrapper button {
+.buttonContainer {
+  text-align: center;
+}
+.buttonContainer button {
   border: none;
   outline: none;
   background: #29b969;
@@ -89,3 +91,18 @@
   cursor: pointer;
   user-select: none;
 }
+
+.rating {
+  display: inline-block;
+}
+
+/* .certificateWrapper {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.certificateImg {
+  width: 64px;
+  height: auto;
+} */

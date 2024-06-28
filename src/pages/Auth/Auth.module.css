@@ -26,9 +26,10 @@
 }
 .signup .left img,
 .login .right img {
-  width: 600px;
+  width: 550px;
   max-width: 90%;
-  align-self: center;
+  align-self: flex-start;
+  margin-top: 10%;
 }
 form {
   background: rgba(255, 255, 255, 0.8);
@@ -37,6 +38,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 500px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }

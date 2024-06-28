@@ -143,6 +143,7 @@ header {
   color: #333;
   text-align: center;
   cursor: pointer;
+  width: 100%;
   transition: background-color 0.3s;
 }
 .profileMenu ul li:hover {

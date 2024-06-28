@@ -6,7 +6,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+import axios from "../../axiosConfig";
 
 const Login = ({ userData, setUserData, isLoggedIn, setIsLoggedIn }) => {
   const [credentials, setCredentials] = useState({
@@ -25,14 +25,29 @@ const Login = ({ userData, setUserData, isLoggedIn, setIsLoggedIn }) => {
     try {
       console.log("Sending request with credentials:", credentials);
       const response = await axios.post(
-        "https://icare48.000webhostapp.com/api/clinic/login",
-        credentials
+        "https://icare48.000webhostapp.com/auth/login",
+        {
+          email: credentials.email,
+          pass: credentials.pass,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
-      const decoded = jwtDecode(response.data.token);
-      localStorage.setItem("token", response.data.token);
+
+      // const response = await axios.post("/auth/login", {
+      //   email: credentials.email,
+      //   password: credentials.pass,
+      // });
+
+      const data = response.data;
+      const decoded = jwtDecode(data.token);
+      localStorage.setItem("token", data.token);
       setUserData(decoded);
       setIsLoggedIn(true);
-      console.log("Login successful", response.data);
+      console.log("Login Successful:", response.data);
       navigate("/home", { replace: true });
     } catch (error) {
       console.error("Login failed", error);
