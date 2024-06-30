@@ -134,32 +134,6 @@ const Profile = ({ userData }) => {
                   className={styles.passwordToggle}
                 />
               </div>
-            </div>
-            <div className={styles.infoRight}>
-              <label htmlFor="address">Address</label>
-              <input type="text" id="address" disabled={!isEditing} />
-              <label htmlFor="phone">Phone Number</label>
-              <div className={styles.phoneInput}>
-                <input
-                  id="countryCode"
-                  name="countryCode"
-                  className={styles.countryCode}
-                  type="text"
-                  disabled={!isEditing}
-                />
-                <input
-                  id="phone"
-                  name="phone"
-                  type="text"
-                  disabled={!isEditing}
-                />
-              </div>
-              <label htmlFor="experience">Experience</label>
-              <input type="text" id="experience" disabled={!isEditing} />
-              <label htmlFor="work-time">Work Time</label>
-              <input type="text" id="work-time" disabled={!isEditing} />
-              <label htmlFor="description">Description</label>
-              <input type="text" id="description" disabled={!isEditing} />
               <label htmlFor="certificate">
                 Professional Practice Certificate
               </label>
@@ -171,6 +145,23 @@ const Profile = ({ userData }) => {
                 />
                 <input type="file" id="certificate" disabled={!isEditing} />
               </div>
+            </div>
+            <div className={styles.infoRight}>
+              <label htmlFor="address">Address</label>
+              <input type="text" id="address" disabled={!isEditing} />
+              <label htmlFor="phone">Phone Number</label>
+              <input
+                id="phone"
+                name="phone"
+                type="text"
+                disabled={!isEditing}
+              />
+              <label htmlFor="experience">Experience</label>
+              <input type="text" id="experience" disabled={!isEditing} />
+              <label htmlFor="work-time">Work Time</label>
+              <input type="text" id="work-time" disabled={!isEditing} />
+              <label htmlFor="description">Description</label>
+              <input type="text" id="description" disabled={!isEditing} />
               <label htmlFor="rating">Rating</label>
               <div className="rating">{stars}</div>
             </div>

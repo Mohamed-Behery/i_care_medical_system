@@ -71,16 +71,9 @@ select:focus {
 label {
   color: #333333;
 }
-.nameInput,
-.phoneInput {
+.nameInput {
   display: flex;
   gap: 8px;
-}
-.phoneInput input {
-  width: 85%;
-}
-.countryCode {
-  width: 15% !important;
 }
 select option {
   margin: 8px;

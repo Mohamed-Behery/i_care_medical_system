@@ -7,16 +7,18 @@ import axios from "../../axiosConfig";
 const Signup = () => {
   const [next, setNext] = useState(false);
   const [credentials, setCredentials] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     specialty: "",
-    phone: "",
-    countryCode: "",
     email: "",
-    password: "",
+    pass: "",
+    address: "",
+    phone_number: "",
     category: "",
-    country: "",
-    city: "",
+    experience: "",
+    work_time: "",
+    description: "",
+    certificate: "",
   });
 
   useEffect(() => {
@@ -28,6 +30,15 @@ const Signup = () => {
     }
   }, [credentials.category]);
 
+  const handleCategoryChange = (e) => {
+    const category = e.target.value;
+    setCredentials((prevState) => ({
+      ...prevState,
+      category: category,
+      specialty: category === "pharmacy" ? "" : prevState.specialty,
+    }));
+  };
+
   const handleNext = (e) => {
     e.preventDefault();
     setNext(true);
@@ -38,18 +49,20 @@ const Signup = () => {
     try {
       console.log(credentials);
       const response = await axios.post(
-        "https://icare48.000webhostapp.com/api/clinic/signup",
+        "/clinic/register",
         {
-          first_name: credentials.firstName,
-          last_name: credentials.lastName,
+          first_name: credentials.first_name,
+          last_name: credentials.last_name,
           specialty: credentials.specialty,
-          phone: credentials.phone,
-          countryCode: credentials.countryCode,
+          address: credentials.address,
+          work_time: credentials.work_time,
+          experience: credentials.experience,
+          description: credentials.description,
           email: credentials.email,
-          password: credentials.password,
+          phone_number: credentials.phone_number,
+          pass: credentials.pass,
           category: credentials.category,
-          country: credentials.country,
-          city: credentials.city,
+          img: credentials.certificate,
         },
         {
           headers: {
@@ -58,9 +71,9 @@ const Signup = () => {
         }
       );
 
-      console.log("Signup successful", response.data);
+      console.log("Register successful", response.data);
     } catch (error) {
-      console.error("Signup failed", error);
+      console.error("Register failed", error);
     }
   };
 
@@ -80,8 +93,8 @@ const Signup = () => {
                     <label htmlFor="first-name">First Name</label> <br />
                     <input
                       id="first-name"
-                      name="first-name"
-                      value={credentials.firstName}
+                      name="first_name"
+                      value={credentials.first_name}
                       onChange={(e) =>
                         setCredentials({
                           ...credentials,
@@ -93,20 +106,32 @@ const Signup = () => {
                   </div>
                   <div>
                     <label htmlFor="last-name">Last Name</label> <br />
-                    <input id="last-name" name="last-name" type="text" />
+                    <input
+                      id="last-name"
+                      name="last_name"
+                      value={credentials.last_name}
+                      onChange={(e) =>
+                        setCredentials({
+                          ...credentials,
+                          last_name: e.target.value,
+                        })
+                      }
+                      type="text"
+                    />
                   </div>
                 </div>
                 <label htmlFor="specialty">Specialty</label>
                 <select
                   name="specialty"
                   id="specialty"
+                  value={credentials.specialty}
                   onChange={(e) =>
                     setCredentials({
                       ...credentials,
                       specialty: e.target.value,
                     })
                   }
-                  disabled={credentials.category === "Pharmacy"}
+                  disabled={credentials.category === "pharmacy"}
                 >
                   <option value="dermatology">Dermatology</option>
                   <option value="orthopedics">Orthopedics</option>
@@ -120,27 +145,50 @@ const Signup = () => {
                   <option value="radiology">Radiology</option>
                 </select>
                 <label htmlFor="phone">Phone Number</label>
-                <div className={styles.phoneInput}>
-                  <input
-                    id="countryCode"
-                    name="countryCode"
-                    className={styles.countryCode}
-                    type="text"
-                  />
-                  <input id="phone" name="phone" type="text" />
-                </div>
+                <input
+                  id="phone"
+                  name="phone_number"
+                  value={credentials.phone}
+                  onChange={(e) =>
+                    setCredentials({
+                      ...credentials,
+                      phone_number: e.target.value,
+                    })
+                  }
+                  type="text"
+                />
                 <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" />
+                <input
+                  id="email"
+                  name="email"
+                  value={credentials.email}
+                  onChange={(e) =>
+                    setCredentials({
+                      ...credentials,
+                      email: e.target.value,
+                    })
+                  }
+                  type="email"
+                />
                 <label htmlFor="password">Password</label>
-                <input id="password" name="password" type="password" />
+                <input
+                  id="password"
+                  name="pass"
+                  value={credentials.pass}
+                  onChange={(e) =>
+                    setCredentials({
+                      ...credentials,
+                      pass: e.target.value,
+                    })
+                  }
+                  type="password"
+                />
                 <label htmlFor="category">Category</label>
                 <select
                   name="category"
                   id="category"
                   value={credentials.category}
-                  onChange={(e) =>
-                    setCredentials({ ...credentials, category: e.target.value })
-                  }
+                  onChange={handleCategoryChange}
                 >
                   <option value="doctor">Doctor</option>
                   <option value="pharmacy">Pharmacy</option>
@@ -157,18 +205,74 @@ const Signup = () => {
             {next === true && (
               <>
                 <label htmlFor="address">Address</label>
-                <input type="text" id="address" />
+                <input
+                  type="text"
+                  name="address"
+                  value={credentials.address}
+                  onChange={(e) =>
+                    setCredentials({
+                      ...credentials,
+                      address: e.target.value,
+                    })
+                  }
+                  id="address"
+                />
                 <label htmlFor="experience">Experience</label>
-                <input type="text" name="experience" id="experience" />
+                <input
+                  type="text"
+                  name="experience"
+                  value={credentials.experience}
+                  onChange={(e) =>
+                    setCredentials({
+                      ...credentials,
+                      experience: e.target.value,
+                    })
+                  }
+                  id="experience"
+                />
                 <label htmlFor="work-time">Work Time</label>
-                <input type="text" name="work-time" id="work-time" />
+                <input
+                  type="text"
+                  name="work_time"
+                  value={credentials.work_time}
+                  onChange={(e) =>
+                    setCredentials({
+                      ...credentials,
+                      work_time: e.target.value,
+                    })
+                  }
+                  id="work-time"
+                />
                 <label htmlFor="description">Description</label>
-                <input type="text" name="description" id="description" />
+                <input
+                  type="text"
+                  name="description"
+                  value={credentials.description}
+                  onChange={(e) =>
+                    setCredentials({
+                      ...credentials,
+                      description: e.target.value,
+                    })
+                  }
+                  id="description"
+                />
                 <label htmlFor="certificate">
                   Professional Practice Certificate
                 </label>
                 <div className="certificateWrapper">
-                  <input type="file" id="certificate" />
+                  <img src="" alt="" />
+                  <input
+                    type="file"
+                    id="certificate"
+                    name="certificate"
+                    value={credentials.certificate}
+                    onChange={(e) =>
+                      setCredentials({
+                        ...credentials,
+                        certificate: e.target.value,
+                      })
+                    }
+                  />
                   <p>
                     If the certificate is forged, You will be <br /> subjected
                     to legal accountability.
