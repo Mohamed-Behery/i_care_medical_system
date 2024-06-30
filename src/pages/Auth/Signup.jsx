@@ -54,10 +54,6 @@ const Signup = () => {
           first_name: credentials.first_name,
           last_name: credentials.last_name,
           specialty: credentials.specialty,
-          address: credentials.address,
-          work_time: credentials.work_time,
-          experience: credentials.experience,
-          description: credentials.description,
           email: credentials.email,
           phone_number: credentials.phone_number,
           pass: credentials.pass,
@@ -204,58 +200,6 @@ const Signup = () => {
             )}
             {next === true && (
               <>
-                <label htmlFor="address">Address</label>
-                <input
-                  type="text"
-                  name="address"
-                  value={credentials.address}
-                  onChange={(e) =>
-                    setCredentials({
-                      ...credentials,
-                      address: e.target.value,
-                    })
-                  }
-                  id="address"
-                />
-                <label htmlFor="experience">Experience</label>
-                <input
-                  type="text"
-                  name="experience"
-                  value={credentials.experience}
-                  onChange={(e) =>
-                    setCredentials({
-                      ...credentials,
-                      experience: e.target.value,
-                    })
-                  }
-                  id="experience"
-                />
-                <label htmlFor="work-time">Work Time</label>
-                <input
-                  type="text"
-                  name="work_time"
-                  value={credentials.work_time}
-                  onChange={(e) =>
-                    setCredentials({
-                      ...credentials,
-                      work_time: e.target.value,
-                    })
-                  }
-                  id="work-time"
-                />
-                <label htmlFor="description">Description</label>
-                <input
-                  type="text"
-                  name="description"
-                  value={credentials.description}
-                  onChange={(e) =>
-                    setCredentials({
-                      ...credentials,
-                      description: e.target.value,
-                    })
-                  }
-                  id="description"
-                />
                 <label htmlFor="certificate">
                   Professional Practice Certificate
                 </label>

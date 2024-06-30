@@ -3,7 +3,7 @@ import styles from "./Auth.module.css";
 import loginImg from "./../../images/login.png";
 import { Link, useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode"; // الاستيراد الصحيح
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "../../axiosConfig";
@@ -25,7 +25,7 @@ const Login = ({ userData, setUserData, isLoggedIn, setIsLoggedIn }) => {
     try {
       console.log("Sending request with credentials:", credentials);
       const response = await axios.post(
-        "https://icare48.000webhostapp.com/auth/login",
+        "https://icare48.000webhostapp.com/api/clinic/login",
         {
           email: credentials.email,
           pass: credentials.pass,
@@ -37,11 +37,6 @@ const Login = ({ userData, setUserData, isLoggedIn, setIsLoggedIn }) => {
         }
       );
 
-      // const response = await axios.post("/auth/login", {
-      //   email: credentials.email,
-      //   password: credentials.pass,
-      // });
-
       const data = response.data;
       const decoded = jwtDecode(data.token);
       localStorage.setItem("token", data.token);
@@ -50,7 +45,16 @@ const Login = ({ userData, setUserData, isLoggedIn, setIsLoggedIn }) => {
       console.log("Login Successful:", response.data);
       navigate("/home", { replace: true });
     } catch (error) {
-      console.error("Login failed", error);
+      if (error.response) {
+        console.error("Error response data:", error.response.data);
+        console.error("Error response status:", error.response.status);
+        console.error("Error response headers:", error.response.headers);
+      } else if (error.request) {
+        console.error("Error request:", error.request);
+      } else {
+        console.error("Error message:", error.message);
+      }
+      console.error("Login failed", error.config);
     }
   };
 
